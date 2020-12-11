@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import { ConfigProvider } from 'antd';
 import locale from 'antd/lib/locale/fa_IR';
 
-import 'antd/dist/antd.less';
-import 'styles/globals.scss';
+import 'styles/globals.less';
 
 function App({ Component, pageProps }) {
   return (
