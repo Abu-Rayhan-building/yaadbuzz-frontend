@@ -9,8 +9,11 @@
     "lint": "eslint src/**/*"
   },
   "dependencies": {
+    "@ant-design/icons": "^4.3.0",
     "antd": "^4.9.1",
+    "classnames": "^2.2.6",
     "next": "10.0.3",
+    "next-i18next": "^7.0.1",
     "prop-types": "^15.7.2",
     "react": "17.0.1",
     "react-dom": "17.0.1"
