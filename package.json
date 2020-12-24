@@ -10,8 +10,11 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.3.0",
-    "antd": "^4.9.1",
+    "antd": "^4.9.4",
     "classnames": "^2.2.6",
+    "http-proxy-middleware": "^1.0.6",
+    "ky": "^0.25.1",
+    "ky-universal": "^0.8.2",
     "next": "10.0.3",
     "next-i18next": "^7.0.1",
     "prop-types": "^15.7.2",

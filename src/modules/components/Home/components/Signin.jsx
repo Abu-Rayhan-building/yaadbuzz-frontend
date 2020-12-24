@@ -7,13 +7,12 @@ import {
   Alert,
 } from 'antd';
 import {
-  UserOutlined,
   LockOutlined,
-  MailOutlined,
+  UserOutlined,
 } from '@ant-design/icons';
 
-import { withTranslation } from 'i18n';
 import useAsync, { STATUS } from 'modules/hooks/useAsync';
+import { withTranslation } from 'i18n';
 
 import helperStyles from 'styles/helpers.module.less';
 
@@ -30,19 +29,19 @@ const tailLayout = {
   },
 };
 
-function Signup({ t }) {
+function Signin({ t }) {
   const {
     execute: handleFinish,
     status,
     error,
-  } = useAsync(requests.signup, false);
+  } = useAsync(requests.signin, false);
 
   return (
     <>
       {status === STATUS.SUCCESS && (
         <Alert
           className={helperStyles.bottomMargined}
-          message={t('Signup successful!')}
+          message={t('Signin successful!')}
           type="success"
           showIcon
         />
@@ -58,32 +57,16 @@ function Signup({ t }) {
       <Form
         {...layout}
         validateTrigger="onBlur"
-        name="signup"
+        name="login"
         requiredMark={false}
         onFinish={handleFinish}
       >
         <Form.Item
+          name="username"
           label={t('Username')}
-          name="login"
           rules={[{ required: true }]}
         >
           <Input prefix={<UserOutlined />} />
-        </Form.Item>
-
-        <Form.Item
-          label={t('Email')}
-          name="email"
-          rules={[
-            {
-              type: 'email',
-              message: t('error.emailType'),
-            },
-            {
-              required: true,
-            },
-          ]}
-        >
-          <Input prefix={<MailOutlined />} />
         </Form.Item>
 
         <Form.Item
@@ -108,7 +91,7 @@ function Signup({ t }) {
             htmlType="submit"
             loading={status === STATUS.PENDING}
           >
-            {t('Sign Up')}
+            {t('Sign In')}
           </Button>
         </Form.Item>
       </Form>
@@ -116,8 +99,8 @@ function Signup({ t }) {
   );
 }
 
-Signup.propTypes = {
+Signin.propTypes = {
   t: PropTypes.func.isRequired,
 };
 
-export default withTranslation()(Signup);
+export default withTranslation()(Signin);

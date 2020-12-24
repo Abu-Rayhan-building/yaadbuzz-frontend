@@ -21,7 +21,7 @@ function Home({ t }) {
         <Layout.Content className={styles.content}>
           <Row>
             <Col xs={24} lg={12} xl={15}>
-              <Typography.Title>{t('YaadBuzz')}</Typography.Title>
+              <Typography.Title>{t('Yaadbuzz')}</Typography.Title>
             </Col>
             <Col xs={24} lg={12} xl={9}>
               <Forms />
@@ -31,7 +31,7 @@ function Home({ t }) {
         <Layout.Footer>
           &copy;
           {' '}
-          {t('YaadBuzz')}
+          {t('Yaadbuzz')}
         </Layout.Footer>
       </Container>
     </Layout>

@@ -1,9 +1,16 @@
 {
-  "YaadBuzz": "یادباز",
-  "Login": "ورود",
+  "Yaadbuzz": "یادباز",
+  "Sign In": "ورود",
   "Sign Up": "ثبت نام",
   "Username": "نام کاربری",
   "Password": "گذرواژه",
   "Password confirmation": "تایید گذرواژه",
-  "Email": "ایمیل"
+  "Email": "ایمیل",
+  "Signup successful!": "ثبت نام انجام شد!",
+  "Signin successful!": "وارد شدید!",
+  "error": {
+    "connectionError": "ارتباط دچار دشواری شد",
+    "emailType": "فرمت ایمیل نادرست است",
+    "userexists": "این نام کاربری پیش از این ثبت شده است"
+  }
 }

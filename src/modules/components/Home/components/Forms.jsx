@@ -4,16 +4,16 @@ import PropTypes from 'prop-types';
 import { withTranslation } from 'i18n';
 import { Card } from 'antd';
 
-import Login from './Login';
+import Signin from './Signin';
 import Signup from './Signup';
 
 const TABS = {
-  LOGIN: 'Login',
+  SIGNIN: 'Sign In',
   SIGNUP: 'Sign Up',
 };
 
 const tabContents = {
-  [TABS.LOGIN]: <Login />,
+  [TABS.SIGNIN]: <Signin />,
   [TABS.SIGNUP]: <Signup />,
 };
 
@@ -25,8 +25,8 @@ function Forms({ t }) {
       tab: t(TABS.SIGNUP),
     },
     {
-      key: TABS.LOGIN,
-      tab: t(TABS.LOGIN),
+      key: TABS.SIGNIN,
+      tab: t(TABS.SIGNIN),
     },
   ];
 
