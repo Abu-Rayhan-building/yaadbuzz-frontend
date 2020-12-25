@@ -1,4 +1,5 @@
 import http from 'modules/services/http';
+import { setToken } from 'modules/services/auth';
 
 function catchError(error) {
   if (!(error instanceof http.HTTPError)) {
@@ -16,10 +17,18 @@ export function signup(values) {
     .catch(catchError);
 }
 
+export function resetPassword({ email }) {
+  return http.post('account/reset-password/init', {
+    body: email,
+  })
+    .catch(catchError);
+}
+
 export function signin(values) {
   return http.post('authenticate', {
     json: values,
   })
-    .json(({ token }) => token)
+    .json()
+    .then(({ id_token: token }) => setToken(token))
     .catch(catchError);
 }

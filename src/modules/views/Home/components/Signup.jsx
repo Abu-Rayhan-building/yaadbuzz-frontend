@@ -7,14 +7,13 @@ import {
   Alert,
 } from 'antd';
 import {
-  LockOutlined,
   UserOutlined,
+  LockOutlined,
+  MailOutlined,
 } from '@ant-design/icons';
 
-import useAsync, { STATUS } from 'modules/hooks/useAsync';
 import { withTranslation } from 'i18n';
-
-import helperStyles from 'styles/helpers.module.less';
+import useAsync, { STATUS } from 'modules/hooks/useAsync';
 
 import * as requests from '../requests';
 
@@ -25,48 +24,67 @@ const layout = {
 const tailLayout = {
   wrapperCol: {
     xs: { offset: 0, span: 24 },
-    md: { offset: 6, span: 6 },
+    sm: { offset: 6, span: 8 },
   },
 };
 
-function Signin({ t }) {
+function Signup({ t }) {
   const {
     execute: handleFinish,
     status,
     error,
-  } = useAsync(requests.signin, false);
+  } = useAsync(requests.signup, false);
 
   return (
     <>
       {status === STATUS.SUCCESS && (
-        <Alert
-          className={helperStyles.bottomMargined}
-          message={t('Signin successful!')}
-          type="success"
-          showIcon
-        />
+        <Form.Item>
+          <Alert
+            message={t('Signup successful!')}
+            type="success"
+            showIcon
+          />
+        </Form.Item>
       )}
       {status === STATUS.ERROR && (
-        <Alert
-          className={helperStyles.bottomMargined}
-          message={t(error)}
-          type="error"
-          showIcon
-        />
+        <Form.Item>
+          <Alert
+            message={t(error)}
+            type="error"
+            showIcon
+          />
+        </Form.Item>
       )}
       <Form
         {...layout}
         validateTrigger="onBlur"
-        name="login"
+        name="signup"
         requiredMark={false}
         onFinish={handleFinish}
+        size="large"
       >
         <Form.Item
-          name="username"
           label={t('Username')}
+          name="login"
           rules={[{ required: true }]}
         >
           <Input prefix={<UserOutlined />} />
+        </Form.Item>
+
+        <Form.Item
+          label={t('Email')}
+          name="email"
+          rules={[
+            {
+              type: 'email',
+              message: t('error.emailType'),
+            },
+            {
+              required: true,
+            },
+          ]}
+        >
+          <Input prefix={<MailOutlined />} />
         </Form.Item>
 
         <Form.Item
@@ -91,7 +109,7 @@ function Signin({ t }) {
             htmlType="submit"
             loading={status === STATUS.PENDING}
           >
-            {t('Sign In')}
+            {t('Sign Up')}
           </Button>
         </Form.Item>
       </Form>
@@ -99,8 +117,8 @@ function Signin({ t }) {
   );
 }
 
-Signin.propTypes = {
+Signup.propTypes = {
   t: PropTypes.func.isRequired,
 };
 
-export default withTranslation()(Signin);
+export default withTranslation()(Signup);

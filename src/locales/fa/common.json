@@ -8,6 +8,9 @@
   "Email": "ایمیل",
   "Signup successful!": "ثبت نام انجام شد!",
   "Signin successful!": "وارد شدید!",
+  "Reset email sent!": "ایمیل بازیابی گذرواژه فرستاده شد!",
+  "Reset password": "بازیابی گذرواژه",
+  "Return": "بازگشت",
   "error": {
     "connectionError": "ارتباط دچار دشواری شد",
     "emailType": "فرمت ایمیل نادرست است",
