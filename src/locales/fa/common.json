@@ -11,7 +11,7 @@
   "Reset email sent!": "ایمیل بازیابی گذرواژه فرستاده شد!",
   "Reset password": "بازیابی گذرواژه",
   "Return": "بازگشت",
-  "Copied": "کپی شد",
+  "Copied!": "کپی شد!",
   "Share": "به اشتراک گذاری",
   "Shared department": "به دپارتمان {{name}} در یادباز بپیوندید:\n\u200fhttps://yaadbuzz.ir{{path}}\n گذرواژه: `{{password}}`",
   "error": {

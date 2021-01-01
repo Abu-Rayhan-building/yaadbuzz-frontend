@@ -58,7 +58,7 @@ function Department({
         actions={id === null ? null : [
           (
             <Tooltip
-              title={copied ? t('Copied') : t('Share')}
+              title={copied ? t('Copied!') : t('Share')}
               trigger="hover"
               key="link"
             >
@@ -88,8 +88,11 @@ function Department({
 Department.propTypes = {
   t: PropTypes.func.isRequired,
   avatar: PropTypes.shape({
-    address: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired,
+    address: PropTypes.string,
+    id: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,
+    ]),
   }),
   id: PropTypes.oneOfType([
     PropTypes.string,
