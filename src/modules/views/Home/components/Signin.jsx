@@ -35,13 +35,13 @@ function Signin({ t }) {
     execute: handleSigninFinish,
     status: signinStatus,
     error: signinError,
-  } = useAsync(requests.signin, false);
+  } = useAsync(requests.signin);
 
   const {
     execute: handleResetFinish,
     status: resetStatus,
     error: resetError,
-  } = useAsync(requests.resetPassword, false);
+  } = useAsync(requests.resetPassword);
 
   const router = useRouter();
 

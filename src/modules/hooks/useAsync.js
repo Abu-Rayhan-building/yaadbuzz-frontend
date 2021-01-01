@@ -7,10 +7,14 @@ export const STATUS = {
   ERROR: 'error',
 };
 
-export default function useAsync(asyncFunction, immediate = true) {
+export default function useAsync(asyncFunction, {
+  immediate = false,
+  defaultValue = null,
+  defaultError = null,
+} = {}) {
   const [status, setStatus] = useState(STATUS.IDLE);
-  const [value, setValue] = useState(null);
-  const [error, setError] = useState(null);
+  const [value, setValue] = useState(defaultValue);
+  const [error, setError] = useState(defaultError);
 
   // The execute function wraps asyncFunction and
   // handles setting state for pending, value, and error.
@@ -18,8 +22,8 @@ export default function useAsync(asyncFunction, immediate = true) {
   // on every render, but only if asyncFunction changes.
   const execute = useCallback((...args) => {
     setStatus(STATUS.PENDING);
-    setValue(null);
-    setError(null);
+    setValue(defaultValue);
+    setError(defaultError);
 
     return asyncFunction(...args)
       .then((response) => {

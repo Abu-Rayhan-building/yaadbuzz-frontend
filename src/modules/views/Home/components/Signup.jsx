@@ -33,7 +33,7 @@ function Signup({ t }) {
     execute: handleFinish,
     status,
     error,
-  } = useAsync(requests.signup, false);
+  } = useAsync(requests.signup);
 
   return (
     <>
