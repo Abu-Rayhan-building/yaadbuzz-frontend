@@ -1,25 +1,35 @@
-import React, { useEffect, useCallback } from 'react';
-import { List } from 'antd';
+import React, { useEffect } from 'react';
+import { Col, Row, Spin } from 'antd';
+import { LoadingOutlined } from '@ant-design/icons';
 
 import { withTranslation } from 'i18n';
 import Container from 'modules/components/Container';
-import useAsync from 'modules/hooks/useAsync';
+import useAsync, { STATUS } from 'modules/hooks/useAsync';
 
 import * as requests from './requests';
 import Department from './components/Department';
+import NewDepartment from './components/NewDepartment';
 
-const skeletonDepartments = new Array(6).fill(null).map((_, index) => ({
-  avatar: undefined,
-  id: index,
-  name: undefined,
-  password: null,
-}));
+function renderCol(children, key) {
+  return (
+    <Col key={key} xs={24} sm={12} md={8}>
+      {children}
+    </Col>
+  );
+}
+
+function renderItem(props) {
+  const { id } = props;
+
+  return renderCol(<Department {...props} />, id);
+}
 
 function Dashboard() {
   const {
+    status,
     value,
     execute: getDepartments,
-  } = useAsync(requests.getDepartments, { defaultValue: skeletonDepartments });
+  } = useAsync(requests.getDepartments);
 
   useEffect(() => {
     getDepartments();
@@ -27,20 +37,21 @@ function Dashboard() {
 
   return (
     <Container>
-      <List
-        grid={{
-          gutter: 16,
-          xs: 1,
-          sm: 2,
-          md: 3,
-          lg: 3,
-          xl: 3,
-          xxl: 3,
-        }}
-        rowKey="id"
-        dataSource={value}
-        renderItem={useCallback((props) => <Department {...props} />, [])}
-      />
+      <Spin
+        indicator={(
+          <LoadingOutlined style={{ fontSize: 24 }} />
+        )}
+        spinning={status === STATUS.PENDING}
+      >
+        <Row align="middle" gutter={[16, 16]}>
+          {value && (
+            <>
+              {value.map(renderItem)}
+              {renderCol(<NewDepartment />)}
+            </>
+          )}
+        </Row>
+      </Spin>
     </Container>
   );
 }

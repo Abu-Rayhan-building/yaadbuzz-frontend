@@ -2,8 +2,6 @@ import React, { useCallback, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Card,
-  List,
-  Skeleton,
   Tooltip,
 } from 'antd';
 import { ShareAltOutlined } from '@ant-design/icons';
@@ -47,41 +45,33 @@ function Department({
   });
 
   return (
-    <List.Item>
-      <Card
-        cover={(
-          <img
-            alt="example"
-            src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-          />
-        )}
-        actions={id === null ? null : [
-          (
-            <Tooltip
-              title={copied ? t('Copied!') : t('Share')}
-              trigger="hover"
-              key="link"
-            >
-              <CopyToClipboard text={shareText} onCopy={handleCopied}>
-                <ShareAltOutlined />
-              </CopyToClipboard>
-            </Tooltip>
-          ),
-        ]}
-      >
-        <Card.Meta
-          title={(
-            <Skeleton
-              title={{ width: '69%' }}
-              paragraph={false}
-              loading={!name}
-            >
-              <Link href={`/${id}`}>{name}</Link>
-            </Skeleton>
-          )}
+    <Card
+      cover={avatarAddress && (
+        <img
+          alt="example"
+          src={avatarAddress}
         />
-      </Card>
-    </List.Item>
+      )}
+      actions={id === null ? null : [
+        (
+          <Tooltip
+            title={copied ? t('Copied!') : t('Share')}
+            trigger="hover"
+            key="link"
+          >
+            <CopyToClipboard text={shareText} onCopy={handleCopied}>
+              <ShareAltOutlined />
+            </CopyToClipboard>
+          </Tooltip>
+        ),
+      ]}
+    >
+      <Card.Meta
+        title={(
+          <Link href={`/${id}`}>{name}</Link>
+        )}
+      />
+    </Card>
   );
 }
 
