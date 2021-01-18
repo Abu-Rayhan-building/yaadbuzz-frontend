@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Modal } from 'antd';
+import { useTranslation } from 'react-i18next';
 import { PlusOutlined } from '@ant-design/icons';
-
-import { withTranslation } from 'i18n';
 
 import styles from '../styles.module.less';
 
-function NewDepartment({ t }) {
+function NewDepartment(): JSX.Element {
+  const { t } = useTranslation();
+
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const showModal = () => {
@@ -38,15 +39,9 @@ function NewDepartment({ t }) {
         visible={isModalVisible}
         onOk={handleOk}
         onCancel={handleCancel}
-      >
-        
-      </Modal>
+      />
     </div>
   );
 }
 
-NewDepartment.propTypes = {
-  t: PropTypes.func.isRequired,
-};
-
-export default withTranslation()(NewDepartment);
+export default NewDepartment;

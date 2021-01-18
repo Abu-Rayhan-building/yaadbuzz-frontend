@@ -2,15 +2,15 @@ import React, { useEffect } from 'react';
 import { Col, Row, Spin } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
 
-import { withTranslation } from 'i18n';
-import Container from 'modules/components/Container';
-import useAsync, { STATUS } from 'modules/hooks/useAsync';
+import Container from 'src/components/Container';
+import useAsyncCallback, { Status } from 'src/hooks/useAsyncCallback';
+import { IDepartment } from 'src/model/department.model';
 
 import * as requests from './requests';
 import Department from './components/Department';
 import NewDepartment from './components/NewDepartment';
 
-function renderCol(children, key) {
+function renderCol(children: React.ReactNode, key?: number) {
   return (
     <Col key={key} xs={24} sm={12} md={8}>
       {children}
@@ -18,18 +18,16 @@ function renderCol(children, key) {
   );
 }
 
-function renderItem(props) {
-  const { id } = props;
+function renderItem(department: IDepartment) {
+  const { id } = department;
 
-  return renderCol(<Department {...props} />, id);
+  return renderCol(<Department {...department} />, id);
 }
 
-function Dashboard() {
-  const {
-    status,
-    value,
-    execute: getDepartments,
-  } = useAsync(requests.getDepartments);
+function Dashboard(): JSX.Element {
+  const { status, value, execute: getDepartments } = useAsyncCallback(
+    requests.getDepartments
+  );
 
   useEffect(() => {
     getDepartments();
@@ -38,10 +36,8 @@ function Dashboard() {
   return (
     <Container>
       <Spin
-        indicator={(
-          <LoadingOutlined style={{ fontSize: 24 }} />
-        )}
-        spinning={status === STATUS.PENDING}
+        indicator={<LoadingOutlined style={{ fontSize: 24 }} />}
+        spinning={status === Status.Pending}
       >
         <Row align="middle" gutter={[16, 16]}>
           {value && (
@@ -56,4 +52,4 @@ function Dashboard() {
   );
 }
 
-export default withTranslation()(Dashboard);
+export default Dashboard;

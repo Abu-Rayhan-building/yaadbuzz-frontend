@@ -3,9 +3,10 @@ import { Form, Input, Button, Alert } from 'antd';
 import { UserOutlined, LockOutlined, MailOutlined } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
 
-import useAsync, { Status } from 'src/hooks/useAsync';
+import useAsyncCallback, { Status } from 'src/hooks/useAsyncCallback';
 
 import * as requests from '../requests';
+import { RegisterForm } from '../models';
 
 const layout = {
   labelCol: { span: 6 },
@@ -18,15 +19,18 @@ const tailLayout = {
   },
 };
 
-function Signup(): JSX.Element {
-  const { execute: handleFinish, status, error } = useAsync(requests.register);
+function Register(): JSX.Element {
+  const { execute: handleFinish, status, error } = useAsyncCallback<
+    [RegisterForm],
+    unknown
+  >(requests.register);
   const { t } = useTranslation();
 
   return (
     <>
       {status === Status.Success && (
         <Form.Item>
-          <Alert message={t('Signup successful!')} type="success" showIcon />
+          <Alert message={t('Register successful!')} type="success" showIcon />
         </Form.Item>
       )}
       {status === Status.Error && (
@@ -37,7 +41,7 @@ function Signup(): JSX.Element {
       <Form
         {...layout}
         validateTrigger="onBlur"
-        name="signup"
+        name="register"
         requiredMark={false}
         onFinish={handleFinish}
         size="large"
@@ -96,4 +100,4 @@ function Signup(): JSX.Element {
   );
 }
 
-export default Signup;
+export default Register;

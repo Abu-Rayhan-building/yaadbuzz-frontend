@@ -7,10 +7,12 @@ import {
   RightOutlined,
   UserOutlined,
 } from '@ant-design/icons';
+import { useHistory } from 'react-router';
 
-import useAsync, { Status } from 'src/hooks/useAsync';
+import useAsyncCallback, { Status } from 'src/hooks/useAsyncCallback';
 
 import * as requests from '../requests';
+import { LoginForm, ResetPasswordForm } from '../models';
 
 const layout = {
   labelCol: { span: 6 },
@@ -23,28 +25,29 @@ const tailLayout = {
   },
 };
 
-function Signin(): JSX.Element {
+function Login(): JSX.Element {
   const {
-    execute: handleSigninFinish,
-    status: signinStatus,
-    error: signinError,
-  } = useAsync(requests.login);
+    execute: handleLoginFinish,
+    status: loginStatus,
+    error: loginError,
+  } = useAsyncCallback<[LoginForm], unknown>(requests.login);
 
   const {
     execute: handleResetFinish,
     status: resetStatus,
     error: resetError,
-  } = useAsync(requests.resetPassword);
+  } = useAsyncCallback<[ResetPasswordForm], unknown>(requests.resetPassword);
 
   const { t } = useTranslation();
 
-  // const router = useRouter();
+  const history = useHistory();
 
-  // useEffect(() => {
-  //   if (signinStatus === STATUS.SUCCESS) {
-  //     router.push('/dashboard');
-  //   }
-  // }, [signinStatus, router]);
+  useEffect(() => {
+    if (loginStatus === Status.Success) {
+      console.log(history);
+      history.push('/dashboard');
+    }
+  }, [loginStatus, history]);
 
   const [isResettingPassword, setResettingPassword] = useState(false);
 
@@ -111,14 +114,14 @@ function Signin(): JSX.Element {
 
   return (
     <>
-      {signinStatus === Status.Success && (
+      {loginStatus === Status.Success && (
         <Form.Item>
-          <Alert message={t('Signin successful!')} type="success" showIcon />
+          <Alert message={t('Login successful!')} type="success" showIcon />
         </Form.Item>
       )}
-      {signinStatus === Status.Error && (
+      {loginStatus === Status.Error && (
         <Form.Item>
-          <Alert message={t(signinError)} type="error" showIcon />
+          <Alert message={t(loginError)} type="error" showIcon />
         </Form.Item>
       )}
       <Form
@@ -126,7 +129,7 @@ function Signin(): JSX.Element {
         validateTrigger="onBlur"
         name="login"
         requiredMark={false}
-        onFinish={handleSigninFinish}
+        onFinish={handleLoginFinish}
         size="large"
       >
         <Form.Item
@@ -167,7 +170,7 @@ function Signin(): JSX.Element {
             block
             type="primary"
             htmlType="submit"
-            loading={signinStatus === Status.Pending}
+            loading={loginStatus === Status.Pending}
           >
             {t('Login')}
           </Button>
@@ -177,4 +180,4 @@ function Signin(): JSX.Element {
   );
 }
 
-export default Signin;
+export default Login;

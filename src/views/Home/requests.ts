@@ -1,45 +1,43 @@
 import http from 'src/services/http';
-import { setToken } from 'src/services/auth';
+import { LoginForm, RegisterForm, ResetPasswordForm } from './models';
 
-function catchError(error: any) {
+async function catchError(error: unknown): Promise<never> {
   if (!(error instanceof http.HTTPError)) {
     return Promise.reject('error.connectionError');
   }
 
-  return error.response
-    .json()
-    .then(({ message } = {}) => Promise.reject(message));
+  const { message } = await error.response.json();
+  return await Promise.reject(message);
 }
 
-export function register(values: {
-  login: string;
-  email: string;
-  password: string;
-}): Promise<Response> {
-  return http
-    .post('register', {
+export async function register(values: RegisterForm): Promise<unknown> {
+  try {
+    return http.post('register', {
       json: values,
-    })
-    .catch(catchError);
+    });
+  } catch (error) {
+    return catchError(error);
+  }
 }
-
-export function resetPassword({ email }: { email: string }): Promise<Response> {
-  return http
-    .post('account/reset-password/init', {
+export async function login(values: LoginForm): Promise<unknown> {
+  try {
+    await http
+      .post('authenticate', {
+        json: values,
+      })
+      .json();
+  } catch (error) {
+    return catchError(error);
+  }
+}
+export async function resetPassword({
+  email,
+}: ResetPasswordForm): Promise<unknown> {
+  try {
+    return http.post('account/reset-password/init', {
       body: email,
-    })
-    .catch(catchError);
-}
-
-export function login(values: {
-  login: string;
-  password: string;
-}): Promise<void> {
-  return http
-    .post('authenticate', {
-      json: values,
-    })
-    .json()
-    .then(({ id_token: token }: any) => setToken(token))
-    .catch(catchError);
+    });
+  } catch (error) {
+    return catchError(error);
+  }
 }
