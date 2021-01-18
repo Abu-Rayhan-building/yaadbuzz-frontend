@@ -1,9 +1,9 @@
-import { ITopicVote } from 'app/shared/model/topic-vote.model';
-import { IPicture } from 'app/shared/model/picture.model';
-import { IUser } from 'app/shared/model/user.model';
-import { IDepartment } from 'app/shared/model/department.model';
-import { ITopic } from 'app/shared/model/topic.model';
-import { IMemory } from 'app/shared/model/memory.model';
+import { ITopicVote } from './topic-vote.model';
+import { IPicture } from './picture.model';
+import { IUser } from './user.model';
+import { IDepartment } from './department.model';
+import { ITopic } from './topic.model';
+import { IMemory } from './memory.model';
 
 export interface IUserPerDepartment {
   id?: number;

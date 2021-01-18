@@ -1,6 +1,6 @@
-import { ITopicVote } from 'app/shared/model/topic-vote.model';
-import { IDepartment } from 'app/shared/model/department.model';
-import { IUserPerDepartment } from 'app/shared/model/user-per-department.model';
+import { ITopicVote } from './topic-vote.model';
+import { IDepartment } from './department.model';
+import { IUserPerDepartment } from './user-per-department.model';
 
 export interface ITopic {
   id?: number;

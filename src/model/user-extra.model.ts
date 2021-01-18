@@ -1,5 +1,5 @@
-import { IUser } from 'app/shared/model/user.model';
-import { IUserPerDepartment } from 'app/shared/model/user-per-department.model';
+import { IUser } from './user.model';
+import { IUserPerDepartment } from './user-per-department.model';
 
 export interface IUserExtra {
   id?: number;

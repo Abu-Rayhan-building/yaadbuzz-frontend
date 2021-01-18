@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { ConfigProvider } from 'antd';
 
 import reportWebVitals from './reportWebVitals';
 import './i18n';
@@ -9,7 +10,9 @@ import './styles/globals.less';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ConfigProvider direction="rtl">
+      <App />
+    </ConfigProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

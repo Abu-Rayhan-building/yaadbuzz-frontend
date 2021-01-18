@@ -169,7 +169,7 @@ function Signin(): JSX.Element {
             htmlType="submit"
             loading={signinStatus === Status.Pending}
           >
-            {t('Sign In')}
+            {t('Login')}
           </Button>
         </Form.Item>
       </Form>

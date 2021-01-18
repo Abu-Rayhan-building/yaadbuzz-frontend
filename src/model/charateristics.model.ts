@@ -1,4 +1,4 @@
-import { IUserPerDepartment } from 'app/shared/model/user-per-department.model';
+import { IUserPerDepartment } from './user-per-department.model';
 
 export interface ICharateristics {
   id?: number;

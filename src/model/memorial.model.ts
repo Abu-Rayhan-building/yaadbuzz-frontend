@@ -1,6 +1,6 @@
-import { IComment } from 'app/shared/model/comment.model';
-import { IUserPerDepartment } from 'app/shared/model/user-per-department.model';
-import { IDepartment } from 'app/shared/model/department.model';
+import { IComment } from './comment.model';
+import { IUserPerDepartment } from './user-per-department.model';
+import { IDepartment } from './department.model';
 
 export interface IMemorial {
   id?: number;

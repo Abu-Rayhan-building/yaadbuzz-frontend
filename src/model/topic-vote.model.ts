@@ -1,5 +1,5 @@
-import { ITopic } from 'app/shared/model/topic.model';
-import { IUserPerDepartment } from 'app/shared/model/user-per-department.model';
+import { ITopic } from './topic.model';
+import { IUserPerDepartment } from './user-per-department.model';
 
 export interface ITopicVote {
   id?: number;

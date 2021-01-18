@@ -88,7 +88,7 @@ function Signup(): JSX.Element {
             htmlType="submit"
             loading={status === Status.Pending}
           >
-            {t('Sign Up')}
+            {t('Register')}
           </Button>
         </Form.Item>
       </Form>

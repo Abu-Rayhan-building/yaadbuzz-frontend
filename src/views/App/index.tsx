@@ -14,7 +14,7 @@ function Home(): JSX.Element {
 
   return (
     <Layout>
-      <Container className={styles.container}>
+      <Container as="div" className={styles.container}>
         <Layout.Content className={styles.content}>
           <Row>
             <Col xs={24} lg={12} xl={15}>

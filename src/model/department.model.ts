@@ -1,7 +1,7 @@
-import { IUserPerDepartment } from 'app/shared/model/user-per-department.model';
-import { IMemory } from 'app/shared/model/memory.model';
-import { IPicture } from 'app/shared/model/picture.model';
-import { IUser } from 'app/shared/model/user.model';
+import { IUserPerDepartment } from './user-per-department.model';
+import { IMemory } from './memory.model';
+import { IPicture } from './picture.model';
+import { IUser } from './user.model';
 
 export interface IDepartment {
   id?: number;
