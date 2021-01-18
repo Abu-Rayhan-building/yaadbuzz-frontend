@@ -1,19 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { ConfigProvider } from 'antd';
+import faIR from 'antd/lib/locale/fa_IR';
+import { Switch, Route, BrowserRouter } from 'react-router-dom';
 
 import reportWebVitals from './reportWebVitals';
 import './i18n';
-import App from './views/App';
-import faIR from 'antd/lib/locale/fa_IR';
+import routes from './routes';
 
 import './styles/globals.less';
 
 ReactDOM.render(
   <React.StrictMode>
-    <ConfigProvider direction="rtl" locale={faIR}>
-      <App />
-    </ConfigProvider>
+    <BrowserRouter>
+      <ConfigProvider direction="rtl" locale={faIR}>
+        <Switch>
+          {routes.map(({ path, component }) => (
+            <Route key={path} path={path} component={component} />
+          ))}
+        </Switch>
+      </ConfigProvider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
