@@ -3,7 +3,7 @@ import { Form, Input, Button, Alert } from 'antd';
 import { UserOutlined, LockOutlined, MailOutlined } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
 
-import useAsync, { Status } from '../../../hooks/useAsync';
+import useAsync, { Status } from '@/hooks/useAsync';
 
 import * as requests from '../requests';
 

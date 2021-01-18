@@ -67,6 +67,11 @@ const lessLoaderOptions = {
   },
 };
 
+const cssModulesOptions = {
+  getLocalIdent: getCSSModuleLocalIdent,
+  exportLocalsConvention: 'camelCaseOnly',
+};
+
 const hasJsxRuntime = (() => {
   if (process.env.DISABLE_NEW_JSX_TRANSFORM === 'true') {
     return false;
@@ -497,9 +502,7 @@ module.exports = function (webpackEnv) {
                 sourceMap: isEnvProduction
                   ? shouldUseSourceMap
                   : isEnvDevelopment,
-                modules: {
-                  getLocalIdent: getCSSModuleLocalIdent,
-                },
+                modules: cssModulesOptions,
               }),
             },
             // Opt-in support for SASS (using .scss or .sass extensions).
@@ -534,9 +537,7 @@ module.exports = function (webpackEnv) {
                   sourceMap: isEnvProduction
                     ? shouldUseSourceMap
                     : isEnvDevelopment,
-                  modules: {
-                    getLocalIdent: getCSSModuleLocalIdent,
-                  },
+                  modules: cssModulesOptions,
                 },
                 'less-loader',
                 lessLoaderOptions

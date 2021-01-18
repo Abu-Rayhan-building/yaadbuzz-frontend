@@ -1,9 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Layout, Typography, Row, Col } from 'antd';
 import { useTranslation } from 'react-i18next';
 
-import Container from '../../components/Container';
+import Container from '@/components/Container';
 
 import Forms from './components/Forms';
 
@@ -14,7 +13,7 @@ function Home(): JSX.Element {
 
   return (
     <Layout>
-      <Container as="div" className={styles.container}>
+      <Container className={styles.container}>
         <Layout.Content className={styles.content}>
           <Row>
             <Col xs={24} lg={12} xl={15}>

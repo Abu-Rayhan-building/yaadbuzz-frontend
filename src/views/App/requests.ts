@@ -1,5 +1,5 @@
-import http from '../../services/http';
-import { setToken } from '../../services/auth';
+import http from '@/services/http';
+import { setToken } from '@/services/auth';
 
 function catchError(error: any) {
   if (!(error instanceof http.HTTPError)) {
@@ -34,12 +34,12 @@ export function resetPassword({ email }: { email: string }): Promise<Response> {
 export function login(values: {
   login: string;
   password: string;
-}): Promise<string> {
+}): Promise<void> {
   return http
     .post('authenticate', {
       json: values,
     })
     .json()
-    .then(({ id_token: token }: any) => token)
+    .then(({ id_token: token }: any) => setToken(token))
     .catch(catchError);
 }
