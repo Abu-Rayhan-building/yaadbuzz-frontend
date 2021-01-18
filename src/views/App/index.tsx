@@ -2,7 +2,7 @@ import React from 'react';
 import { Layout, Typography, Row, Col } from 'antd';
 import { useTranslation } from 'react-i18next';
 
-import Container from '@/components/Container';
+import Container from 'src/components/Container';
 
 import Forms from './components/Forms';
 

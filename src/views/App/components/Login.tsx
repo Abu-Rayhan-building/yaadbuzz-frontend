@@ -8,7 +8,7 @@ import {
   UserOutlined,
 } from '@ant-design/icons';
 
-import useAsync, { Status } from '@/hooks/useAsync';
+import useAsync, { Status } from 'src/hooks/useAsync';
 
 import * as requests from '../requests';
 

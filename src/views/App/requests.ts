@@ -1,5 +1,5 @@
-import http from '@/services/http';
-import { setToken } from '@/services/auth';
+import http from 'src/services/http';
+import { setToken } from 'src/services/auth';
 
 function catchError(error: any) {
   if (!(error instanceof http.HTTPError)) {
