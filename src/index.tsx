@@ -4,11 +4,11 @@ import { ConfigProvider } from 'antd';
 import faIR from 'antd/lib/locale/fa_IR';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 
+import 'src/styles/globals.less';
+
 import reportWebVitals from './reportWebVitals';
 import './i18n';
 import routes from './routes';
-
-import './styles/globals.less';
 
 ReactDOM.render(
   <React.StrictMode>

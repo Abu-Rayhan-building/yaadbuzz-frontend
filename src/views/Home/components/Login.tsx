@@ -44,7 +44,6 @@ function Login(): JSX.Element {
 
   useEffect(() => {
     if (loginStatus === Status.Success) {
-      console.log(history);
       history.push('/dashboard');
     }
   }, [loginStatus, history]);

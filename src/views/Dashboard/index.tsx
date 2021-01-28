@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { Col, Row, Spin } from 'antd';
-import { LoadingOutlined } from '@ant-design/icons';
 
 import Container from 'src/components/Container';
 import useAsyncCallback, { Status } from 'src/hooks/useAsyncCallback';
 import { IDepartment } from 'src/model/department.model';
+import SpinIndicator from 'src/components/SpinIndicator';
 
 import * as requests from './requests';
 import Department from './components/Department';
@@ -35,10 +35,7 @@ function Dashboard(): JSX.Element {
 
   return (
     <Container>
-      <Spin
-        indicator={<LoadingOutlined style={{ fontSize: 24 }} />}
-        spinning={status === Status.Pending}
-      >
+      <Spin indicator={<SpinIndicator />} spinning={status === Status.Pending}>
         <Row align="middle" gutter={[16, 16]}>
           {value && (
             <>
