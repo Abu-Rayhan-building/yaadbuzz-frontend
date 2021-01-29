@@ -1,5 +1,6 @@
 import Home from './views/Home';
 import Dashboard from './views/Dashboard';
+import Activation from './views/Activation';
 
 const Routes = [
   {
@@ -9,6 +10,10 @@ const Routes = [
   {
     path: '/dashboard',
     component: Dashboard,
+  },
+  {
+    path: '/account/activate',
+    component: Activation,
   },
 ];
 

@@ -1,7 +1,7 @@
 import ky from 'ky';
 
-import { apiUrl, isDev } from '../configs';
+import { apiUrlDev, apiUrlProd, isDev } from '../configs';
 
 export default ky.create({
-  prefixUrl: isDev ? '/api' : `${apiUrl}api`,
+  prefixUrl: isDev ? `${apiUrlDev}api` : `${apiUrlProd}api`,
 });

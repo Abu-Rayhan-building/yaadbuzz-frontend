@@ -2,6 +2,8 @@ export type RegisterForm = {
   login: string;
   email: string;
   password: string;
+  phone?: string;
+  langKey?: string;
 };
 
 export type LoginForm = {

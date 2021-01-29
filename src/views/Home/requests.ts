@@ -13,7 +13,10 @@ async function catchError(error: unknown): Promise<never> {
 export async function register(values: RegisterForm): Promise<unknown> {
   try {
     return http.post('register', {
-      json: values,
+      json: {
+        langKey: 'en',
+        ...values,
+      },
     });
   } catch (error) {
     return catchError(error);

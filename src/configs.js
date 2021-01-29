@@ -1,4 +1,5 @@
 module.exports = {
   isDev: process.env.NODE_ENV === 'development',
-  apiUrl: 'http://localhost:8080/',
+  apiUrlDev: 'http://localhost:8080/',
+  apiUrlProd: 'http://localhost:8080/',
 };

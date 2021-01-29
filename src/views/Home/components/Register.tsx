@@ -1,6 +1,11 @@
 import React from 'react';
 import { Form, Input, Button, Alert } from 'antd';
-import { UserOutlined, LockOutlined, MailOutlined } from '@ant-design/icons';
+import {
+  UserOutlined,
+  LockOutlined,
+  MailOutlined,
+  PhoneOutlined,
+} from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
 
 import useAsyncCallback, { Status } from 'src/hooks/useAsyncCallback';
@@ -52,6 +57,10 @@ function Register(): JSX.Element {
           rules={[{ required: true }]}
         >
           <Input prefix={<UserOutlined />} />
+        </Form.Item>
+
+        <Form.Item label={t('Phone')} name="phone" rules={[{ required: true }]}>
+          <Input prefix={<PhoneOutlined />} />
         </Form.Item>
 
         <Form.Item
