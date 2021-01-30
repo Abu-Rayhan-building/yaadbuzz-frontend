@@ -15,8 +15,8 @@ ReactDOM.render(
     <BrowserRouter>
       <ConfigProvider direction="rtl" locale={faIR}>
         <Switch>
-          {routes.map(({ path, component }) => (
-            <Route key={path} path={path} component={component} exact />
+          {routes.map(({ path, component, exact }) => (
+            <Route key={path} path={path} component={component} exact={exact} />
           ))}
         </Switch>
       </ConfigProvider>
