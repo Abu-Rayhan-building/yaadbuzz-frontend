@@ -5,17 +5,17 @@ import { useHistory } from 'react-router';
 
 import Container from 'src/components/Container';
 
-import styles from './styles.module.less';
+import * as http from 'src/services/http';
 import FullPageSpin from 'src/components/FullPageSpin';
 import useAsyncCallback from 'src/hooks/useAsyncCallback';
-import * as requests from './requests';
-import { ActivationForm } from './models';
+
+import styles from './styles.module.less';
+import { ActivationForm } from 'src/model/user.model';
 
 function Home(): JSX.Element {
-  const { execute: handleFinish, status, error } = useAsyncCallback<
-    [ActivationForm],
-    unknown
-  >(requests.activate);
+  const { execute: handleFinish } = useAsyncCallback<[ActivationForm], unknown>(
+    http.Auth.activate
+  );
   const { t } = useTranslation();
 
   const [loading, setLoading] = useState(true);

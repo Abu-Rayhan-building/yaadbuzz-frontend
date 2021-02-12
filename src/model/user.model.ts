@@ -29,3 +29,24 @@ export const defaultValue: Readonly<IUser> = {
   lastModifiedDate: null,
   password: '',
 };
+
+export type RegisterForm = {
+  login: string;
+  email: string;
+  password: string;
+  phone?: string;
+  langKey?: string;
+};
+
+export type LoginForm = {
+  login: string;
+  password: string;
+};
+
+export interface ResetPasswordForm {
+  email: string;
+}
+
+export type ActivationForm = {
+  activationKey: string;
+};

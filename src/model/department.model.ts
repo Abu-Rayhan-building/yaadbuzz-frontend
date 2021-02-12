@@ -14,3 +14,9 @@ export interface IDepartment {
 }
 
 export const defaultValue: Readonly<IDepartment> = {};
+
+export interface DepartmentForm {
+  avatarId?: string;
+  name: string;
+  password: string;
+}

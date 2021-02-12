@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import { IDepartment } from 'src/model/department.model';
-import { departmentAvatar } from '../../../services/picture-url';
+import { departmentAvatar } from 'src/services/picture-url';
 
 function Department({ id, name, password }: IDepartment): JSX.Element {
   const [copied, setCopied] = useState(false);

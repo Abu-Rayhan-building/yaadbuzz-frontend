@@ -8,10 +8,9 @@ import {
 } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
 
+import * as http from 'src/services/http';
 import useAsyncCallback, { Status } from 'src/hooks/useAsyncCallback';
-
-import * as requests from '../requests';
-import { RegisterForm } from '../models';
+import { RegisterForm } from 'src/model/user.model';
 
 const layout = {
   labelCol: { span: 6 },
@@ -28,7 +27,7 @@ function Register(): JSX.Element {
   const { execute: handleFinish, status, error } = useAsyncCallback<
     [RegisterForm],
     unknown
-  >(requests.register);
+  >(http.Auth.register);
   const { t } = useTranslation();
 
   return (

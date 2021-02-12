@@ -5,7 +5,7 @@ import Container from 'src/components/Container';
 import useAsyncCallback, { Status } from 'src/hooks/useAsyncCallback';
 import SpinIndicator from 'src/components/SpinIndicator';
 
-import * as requests from './requests';
+import * as http from 'src/services/http';
 import Memory from './components/Memory';
 import NewMemory from './components/NewMemory';
 import Memorials from './components/Memorials';
@@ -33,7 +33,7 @@ function renderItem(memory: IMemory) {
 
 function Department(): JSX.Element {
   const { status, value, execute: getDepartmentMemoriies } = useAsyncCallback(
-    requests.getDepartmentMemoriies
+    http.Others.getDepartmentMemoriies
   );
 
   // fuck

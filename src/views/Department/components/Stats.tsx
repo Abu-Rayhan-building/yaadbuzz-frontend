@@ -3,14 +3,14 @@ import { Card } from 'antd';
 import debounce from 'lodash.debounce';
 import { useTranslation } from 'react-i18next';
 
-import useAsyncCallback from '../../../hooks/useAsyncCallback';
-import * as requests from '../requests';
+import * as http from 'src/services/http';
+import useAsyncCallback from 'src/hooks/useAsyncCallback';
 
 function Stats({ depId }: { depId: string }): JSX.Element {
   const [copied, setCopied] = useState(false);
 
   const { status, value, execute: getMyStats } = useAsyncCallback(
-    requests.getMyStats
+    http.Others.getMyStats
   );
 
   useEffect(() => {

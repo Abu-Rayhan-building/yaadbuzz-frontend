@@ -9,10 +9,9 @@ import {
 } from '@ant-design/icons';
 import { useHistory } from 'react-router';
 
+import * as http from 'src/services/http';
 import useAsyncCallback, { Status } from 'src/hooks/useAsyncCallback';
-
-import * as requests from '../requests';
-import { LoginForm, ResetPasswordForm } from '../models';
+import { LoginForm, ResetPasswordForm } from 'src/model/user.model';
 
 const layout = {
   labelCol: { span: 6 },
@@ -30,13 +29,13 @@ function Login(): JSX.Element {
     execute: handleLoginFinish,
     status: loginStatus,
     error: loginError,
-  } = useAsyncCallback<[LoginForm], unknown>(requests.login);
+  } = useAsyncCallback<[LoginForm], unknown>(http.Auth.login);
 
   const {
     execute: handleResetFinish,
     status: resetStatus,
     error: resetError,
-  } = useAsyncCallback<[ResetPasswordForm], unknown>(requests.resetPassword);
+  } = useAsyncCallback<[ResetPasswordForm], unknown>(http.Auth.resetPassword);
 
   const { t } = useTranslation();
 

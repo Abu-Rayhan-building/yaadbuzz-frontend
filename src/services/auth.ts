@@ -1,4 +1,4 @@
-import http from 'src/services/http';
+import * as http from 'src/services/http';
 import { IUser } from 'src/model/user.model';
 interface AuthService {
   getUser: () => Promise<IUser | null>;
@@ -12,7 +12,7 @@ function authFacory(): AuthService {
 
   async function refreshUser() {
     try {
-      user = (await http.get('account').json()) as IUser;
+      user = await http.Auth.getUser();
       isLoggedIn = true;
     } catch (e) {
       isLoggedIn = false;
