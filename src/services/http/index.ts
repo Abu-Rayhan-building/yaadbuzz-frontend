@@ -59,14 +59,96 @@ export const Auth = {
   },
 
   getUser(): Promise<IUser> {
-    return http.get('account').json();
+    // return http.get('account').json();
+    return Promise.resolve({});
   },
 };
 
 export const Department = {
   getAll(): Promise<IDepartment[]> {
     try {
-      return http.get('department/me').json();
+      return Promise.resolve([
+        {
+          id: 1,
+          name: 'دانشکده ریاضی',
+          password: '123456',
+          avatar: {
+            id: 1,
+            address: '',
+          },
+        },
+        {
+          id: 2,
+          name: 'خوابگاه',
+          password: '123456',
+          avatar: {
+            id: 1,
+            address:
+              'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
+          },
+        },
+        {
+          id: 2,
+          name: 'خوابگاه',
+          password: '123456',
+          avatar: {
+            id: 1,
+            address:
+              'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
+          },
+        },
+        {
+          id: 2,
+          name: 'خوابگاه',
+          password: '123456',
+          avatar: {
+            id: 1,
+            address:
+              'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
+          },
+        },
+        {
+          id: 2,
+          name: 'خوابگاه',
+          password: '123456',
+          avatar: {
+            id: 1,
+            address:
+              'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
+          },
+        },
+        {
+          id: 2,
+          name: 'خوابگاه',
+          password: '123456',
+          avatar: {
+            id: 1,
+            address:
+              'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
+          },
+        },
+        {
+          id: 2,
+          name: 'خوابگاه',
+          password: '123456',
+          avatar: {
+            id: 1,
+            address:
+              'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
+          },
+        },
+        {
+          id: 2,
+          name: 'خوابگاه',
+          password: '123456',
+          avatar: {
+            id: 1,
+            address:
+              'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
+          },
+        },
+      ]);
+      // return http.get('department/me').json();
     } catch (error) {
       return transformError(error);
     }

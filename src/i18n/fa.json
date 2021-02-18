@@ -19,6 +19,7 @@
   "Share": "به اشتراک گذاری",
   "Shared department": "به دپارتمان {{name}} در یادباز بپیوندید:\n\u200fhttps://yaadbuzz.ir{{path}}\n گذرواژه: `{{password}}`",
   "New Department": "ساخت دپارتمان",
+  "Dashboard": "داشبورد",
   "error": {
     "connectionError": "ارتباط دچار دشواری شد",
     "emailType": "فرمت ایمیل نادرست است",

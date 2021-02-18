@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import { Col, Row, Spin } from 'antd';
+import { Col, Layout, Row, Spin, Typography } from 'antd';
+import { useTranslation } from 'react-i18next';
 
 import * as http from 'src/services/http';
 import Container from 'src/components/Container';
@@ -29,15 +30,27 @@ function Dashboard(): JSX.Element {
     getDepartments();
   }, [getDepartments]);
 
+  const { t } = useTranslation();
+
   return (
-    <Container>
-      <Spin indicator={<SpinIndicator />} spinning={status === Status.Pending}>
-        <Row align="middle" gutter={[16, 16]}>
-          {value && value.map(renderItem)}
-          <NewDepartment />
-        </Row>
-      </Spin>
-    </Container>
+    <Layout>
+      <Container>
+        <Layout.Content>
+          <Typography.Title>{t('Yaadbuzz')}</Typography.Title>
+          <Spin
+            indicator={<SpinIndicator />}
+            spinning={status === Status.Pending}
+          >
+            <Row align="middle" gutter={[16, 16]}>
+              {value && value.map(renderItem)}
+              <Col span={24}>
+                <NewDepartment />
+              </Col>
+            </Row>
+          </Spin>
+        </Layout.Content>
+      </Container>
+    </Layout>
   );
 }
 

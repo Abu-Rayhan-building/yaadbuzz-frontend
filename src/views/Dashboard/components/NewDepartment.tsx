@@ -1,5 +1,16 @@
 import React, { useCallback, useRef, useState } from 'react';
-import { Alert, Button, Form, FormInstance, Input, Modal, Upload } from 'antd';
+import {
+  Affix,
+  Alert,
+  Button,
+  Col,
+  Form,
+  FormInstance,
+  Input,
+  Modal,
+  Row,
+  Upload,
+} from 'antd';
 import { useTranslation } from 'react-i18next';
 import {
   PlusOutlined,
@@ -13,8 +24,6 @@ import * as http from 'src/services/http';
 import useAsyncCallback, { Status } from 'src/hooks/useAsyncCallback';
 import { getBase64 } from 'src/utils/image';
 import { departmentAvatar } from 'src/services/picture-url';
-
-import styles from '../styles.module.less';
 
 const layout = {
   labelCol: { span: 4 },
@@ -75,16 +84,23 @@ function NewDepartment(): JSX.Element {
   }, []);
 
   return (
-    <div className={styles.newDepartment}>
-      <Button
-        type="primary"
-        size="large"
-        shape="round"
-        icon={<PlusOutlined />}
-        onClick={showModal}
-      >
-        {t('New Department')}
-      </Button>
+    <>
+      <Affix offsetBottom={0}>
+        <Row justify="center" gutter={[32, 32]}>
+          <Col>
+            <Button
+              type="primary"
+              size="large"
+              shape="round"
+              icon={<PlusOutlined />}
+              onClick={showModal}
+            >
+              {t('New Department')}
+            </Button>
+          </Col>
+        </Row>
+      </Affix>
+
       <Modal
         title={t('New Department')}
         visible={isModalVisible}
@@ -151,7 +167,7 @@ function NewDepartment(): JSX.Element {
           </Form.Item>
         </Form>
       </Modal>
-    </div>
+    </>
   );
 }
 
